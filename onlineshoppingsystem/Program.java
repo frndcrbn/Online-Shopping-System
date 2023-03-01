@@ -15,6 +15,7 @@ public class Program {
             System.out.println("[3] Purchased Product.");
             System.out.println("[4] List of Products.");
             System.out.println("[5] List of Customer.");
+            System.out.println("[6] View Order.");
             System.out.println("[0] Exit.");
             System.out.print("Enter here: ");
             int choice = scanner.nextInt();
@@ -29,16 +30,18 @@ public class Program {
                     System.out.print("Enter price:          ");
                     float price = scanner.nextFloat();
                     scanner.nextLine();
-                    store.addProducts(new Product(name_product, desc, price, true));
+                    store.addProducts(new Product(name_product, desc, price));
                     System.out.println("Product added.");
                     break;
                 case 2:
                     System.out.println("#Add Customer");
                     System.out.print("Enter name:       ");
                     String name_customer = scanner.next();
+                    System.out.print("Enter Email:      ");
+                    String email = scanner.next();
                     System.out.print("Enter address:    ");
                     String address = scanner.next();
-                    store.addCustomers(new Customer(name_customer, address));
+                    store.addCustomers(new Customer(name_customer, email, address));
                     System.out.println("Customer added.");
                     break;
                 case 3:
@@ -63,6 +66,16 @@ public class Program {
                 case 5:
                     System.out.println("#List of Customers");
                     store.displayCustomers();
+                    break;
+                case 6:
+                    System.out.print("Enter Customer(name): ");
+                    name_customer = scanner.next();
+                    customer = store.getCustomers().stream().filter(c -> c.getName().equals(name_customer)).findFirst().orElse(null);
+                    if (customer != null){
+                        store.displayOrder(customer);
+                    } else {
+                        System.out.println("Customer not found.");
+                    }
                     break;
                 case 0:
                     System.out.println("Thank you for using us.");

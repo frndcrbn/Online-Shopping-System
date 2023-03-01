@@ -5,7 +5,9 @@ import java.util.List;
 public interface CustomerAbs {
 
     String getName();
+    String getEmail();
     String getAddress();
-    void purchasedProduct(Product product);
-    List<Product> getPurchasedProduct();
+    List<Product> getOrders();
+    void purchasedOrder(Product product);
+
 }

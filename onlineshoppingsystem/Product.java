@@ -6,8 +6,9 @@ public class Product implements ProductAbs{
     private String description;
     private float price;
     private boolean availability;
+    private String status;
 
-    Product(String name, String description, float price, boolean availability){
+    Product(String name, String description, float price){
         this.name = name;
         this.description = description;
         this.price = price;
@@ -34,4 +35,11 @@ public class Product implements ProductAbs{
         this.availability = availability;
     }
 
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
 }
